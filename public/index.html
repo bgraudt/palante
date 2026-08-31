@@ -61,48 +61,53 @@
 
     header {
       padding: 48px 0 32px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-      background: var(--white);
+      text-align: left;
+      background: var(--bg);
     }
 
-    .date-line {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      letter-spacing: 0.02em;
-    }
-
-    .logo {
-      font-family: 'PT Serif', serif;
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 20px;
-      letter-spacing: 0.03em;
-    }
-
-    .tagline {
+    .header-line {
       font-size: 16px;
       color: var(--text-muted);
-      max-width: 520px;
-      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .header-line .brand {
+      font-family: 'PT Serif', serif;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    @media (max-width: 640px) {
+      .header-line {
+        font-size: 15px;
+      }
     }
 
     .about {
-      padding: 48px 0 32px;
-      text-align: center;
+      padding: 48px 0 16px;
     }
 
     .about h2 {
       font-size: 22px;
       margin-bottom: 16px;
+      text-align: left;
     }
 
-    .about p {
+    .about .service {
+      margin-bottom: 0;
+    }
+
+    .about .service h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .about .service p {
+      margin-bottom: 20px;
+      font-weight: 400;
       color: var(--text-muted);
-      max-width: 560px;
-      margin: 0 auto;
+      font-size: 16px;
     }
 
     .services {
@@ -130,11 +135,15 @@
     }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-family: 'PT Sans', sans-serif;
       font-size: 15px;
       font-weight: 700;
+      line-height: 1.2;
       padding: 12px 24px;
+      min-height: 44px;
       background: var(--accent);
       color: var(--white);
       border: none;
@@ -142,6 +151,7 @@
       cursor: pointer;
       transition: background 0.2s;
       text-decoration: none;
+      box-sizing: border-box;
     }
 
     .btn:hover {
@@ -156,29 +166,58 @@
     }
 
     .closing {
-      text-align: center;
-      padding: 32px 0 48px;
-      border-top: 1px solid var(--border);
+      text-align: left;
+      padding: 12px 0 48px;
     }
 
     .closing p {
       font-family: 'PT Serif', serif;
       font-size: 18px;
       color: var(--text);
-      margin-bottom: 6px;
+      margin-bottom: 0;
+      white-space: nowrap;
     }
 
     .closing .brand {
-      font-family: 'PT Serif', serif;
       font-weight: 700;
-      font-size: 20px;
-      margin-top: 12px;
+    }
+
+    @media (max-width: 560px) {
+      .closing p {
+        white-space: normal;
+        line-height: 1.5;
+      }
     }
 
     .contacts {
       background: var(--white);
-      border-top: 1px solid var(--border);
       padding: 40px 0 48px;
+    }
+
+    .map-wrap {
+      margin-top: 28px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      min-height: 321px;
+    }
+
+    .map-wrap > ymaps,
+    .map-wrap > div {
+      width: 100% !important;
+    }
+
+    .legal {
+      background: var(--bg);
+      padding: 28px 0 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .legal p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 4px;
     }
 
     .contacts-inner {
@@ -234,148 +273,7 @@
       fill: currentColor;
     }
 
-    /* Modal */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      overflow-y: auto;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    .modal {
-      background: var(--white);
-      border-radius: 10px;
-      width: 100%;
-      max-width: 420px;
-      padding: 28px 24px;
-      position: relative;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-
-    .modal h3 {
-      font-size: 22px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      line-height: 1;
-      cursor: pointer;
-      color: var(--text-muted);
-      padding: 4px;
-    }
-
-    .modal-close:hover {
-      color: var(--text);
-    }
-
-    .form-group {
-      margin-bottom: 16px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--text);
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      font-family: 'PT Sans', sans-serif;
-      font-size: 16px;
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--bg);
-      color: var(--text);
-      transition: border-color 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-
-    .form-group textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .form-submit {
-      width: 100%;
-      margin-top: 8px;
-      padding: 14px;
-      font-size: 16px;
-    }
-
-    .form-note {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-align: center;
-      margin-top: 12px;
-    }
-
-    .form-error {
-      display: none;
-      color: #b33;
-      font-size: 14px;
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .form-error.active {
-      display: block;
-    }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 20px 0;
-    }
-
-    .form-success.active {
-      display: block;
-    }
-
-    .form-success p {
-      font-size: 17px;
-      margin-bottom: 16px;
-    }
-
-    /* honeypot */
-    .hp {
-      position: absolute;
-      left: -9999px;
-      opacity: 0;
-      height: 0;
-      overflow: hidden;
-    }
-
     @media (max-width: 480px) {
-      .logo {
-        font-size: 34px;
-      }
-
       header {
         padding: 36px 0 28px;
       }
@@ -395,16 +293,18 @@
 
   <header>
     <div class="container">
-      <p class="date-line">1 сентября 2026 года мы вступаем на тропу</p>
-      <div class="logo">¡ПАЛАНТЕ!</div>
-      <p class="tagline">16 лет мы помогаем детям и их семьям чувствовать себя увереннее, идти вперёд</p>
+      <p class="header-line">1 сентября 2026 года мы вступаем на тропу <span class="brand">¡ПАЛАНТЕ!</span> 16 лет мы помогаем детям и их семьям чувствовать себя увереннее, идти вперёд</p>
     </div>
   </header>
 
   <section class="about">
     <div class="container">
       <h2>¡ПАЛАНТЕ! — это</h2>
-      <p>команда, которая создаёт поддерживающую среду как для нейротипичных детей, так и для детей с особыми образовательными и поведенческими потребностями.</p>
+      <div class="service">
+        <h3>Команда</h3>
+        <p>которая создаёт поддерживающую среду как для нейротипичных детей, так и для детей с особыми образовательными и поведенческими потребностями.</p>
+        <a class="btn" href="#contacts">Контакты</a>
+      </div>
     </div>
   </section>
 
@@ -413,26 +313,24 @@
       <div class="service">
         <h3>Центр поддержки детей 0, 1–7 классов в адаптации к школе</h3>
         <p>Группы полного дня, где дети, которые учатся по программам 5.1, 7.1, 8.1 и те, кому по разным причинам больше подходят небольшие классы с индивидуальным подходом, — учатся встрече с новым, дружить, спрашивать, ошибаться и пробовать снова.</p>
-        <button class="btn" type="button" data-open-modal data-subject="Заявка: Центр поддержки">Оставить заявку</button>
+        <a class="btn" href="https://t.me/PalanteTeam" target="_blank" rel="noopener noreferrer">Оставить заявку</a>
       </div>
 
       <div class="service">
         <h3>Интегративные семейные путешествия</h3>
         <p>Поездки, где каждая семья может быть собой. Где не надо ничего доказывать и оправдываться. Где дети и родители отдыхают вместе и по-настоящему.</p>
-        <button class="btn" type="button" data-open-modal data-subject="Предварительная регистрация: Путешествия">Предварительная регистрация</button>
+        <a class="btn" href="https://forms.yandex.ru/u/684a9f5b5056908f69b955a8" target="_blank" rel="noopener noreferrer">Предварительная регистрация</a>
       </div>
     </div>
   </section>
 
   <section class="closing">
     <div class="container">
-      <p>Мы — рядом.</p>
-      <p>Мы помогаем делать шаги вперёд!</p>
-      <p class="brand">¡ПАЛАНТЕ!</p>
+      <p>Мы — рядом. Мы помогаем делать шаги вперёд! <span class="brand">¡ПАЛАНТЕ!</span></p>
     </div>
   </section>
 
-  <section class="contacts">
+  <section class="contacts" id="contacts">
     <div class="container">
       <div class="contacts-inner">
         <div class="contacts-info">
@@ -445,150 +343,23 @@
           <a href="https://t.me/skladnojzhiraf" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.064-1.226-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
           </a>
+          <a href="https://vk.ru/palante.space" target="_blank" rel="noopener noreferrer" aria-label="VK">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.33 14.27h-1.54c-.54 0-.71-.43-1.69-1.42-.85-.84-1.23-.95-1.44-.95-.3 0-.38.08-.38.5v1.3c0 .33-.11.53-1 .53-1.48 0-3.12-.9-4.27-2.57-1.73-2.48-2.2-4.34-2.2-4.72 0-.21.08-.4.5-.4h1.54c.37 0 .51.17.66.57.74 2.14 1.98 4.01 2.49 4.01.19 0 .28-.09.28-.56v-2.18c-.06-1.02-.6-1.11-.6-1.47 0-.17.14-.34.37-.34h2.42c.32 0 .43.17.43.54v2.94c0 .32.14.43.23.43.19 0 .35-.11.7-.46 1.08-1.21 1.85-3.08 1.85-3.08.1-.22.27-.4.64-.4h1.54c.46 0 .56.24.46.54-.19.9-2.02 3.47-2.02 3.47-.16.26-.22.38 0 .68.16.22.69.67 1.04 1.08.64.74 1.13 1.36 1.26 1.79.14.43-.07.65-.5.65z"/></svg>
+          </a>
         </div>
+      </div>
+      <div class="map-wrap">
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A70e34b30d156c2af8b05494c2fbf87eb62c1d0d5f688f3593c1d8b84e2f0b073&amp;width=100%25&amp;height=321&amp;lang=ru_RU&amp;scroll=true"></script>
       </div>
     </div>
   </section>
 
-  <!-- Modal -->
-  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal">
-      <button class="modal-close" type="button" aria-label="Закрыть" data-close-modal>&times;</button>
-      <h3 id="modal-title">Оставить заявку</h3>
-
-      <form id="reg-form">
-        <input type="hidden" id="form-subject" name="subject" value="Заявка с сайта Паланте">
-
-        <!-- honeypot -->
-        <div class="hp" aria-hidden="true">
-          <label for="website">Website</label>
-          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-        </div>
-
-        <div class="form-group">
-          <label for="parent-name">Имя родителей</label>
-          <input type="text" id="parent-name" name="parentName" required autocomplete="name">
-        </div>
-
-        <div class="form-group">
-          <label for="child-age">Возраст ребёнка</label>
-          <input type="text" id="child-age" name="childAge" required>
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Телефон</label>
-          <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+7">
-        </div>
-
-        <div class="form-group">
-          <label for="email">Почта</label>
-          <input type="email" id="email" name="email" required autocomplete="email">
-        </div>
-
-        <div class="form-group">
-          <label for="comment">Комментарий</label>
-          <textarea id="comment" name="comment" rows="3"></textarea>
-        </div>
-
-        <button class="btn form-submit" type="submit">Отправить</button>
-        <p class="form-note">Мы свяжемся с вами в ближайшее время</p>
-        <p class="form-error" id="form-error"></p>
-      </form>
-
-      <div class="form-success" id="form-success">
-        <p>Спасибо! Заявка отправлена.</p>
-        <button class="btn" type="button" data-close-modal>Закрыть</button>
-      </div>
+  <footer class="legal">
+    <div class="container">
+      <p>ИП Осорио Кастро Ксения Карлосовна</p>
+      <p>ОГРНИП 323774600323341 · ИНН 772508667602</p>
+      <p>Адрес регистрации: 115419, г. Москва, ул. Донская, д. 24, кв. 88</p>
     </div>
-  </div>
-
-  <script>
-    (function () {
-      const modal = document.getElementById('modal');
-      const form = document.getElementById('reg-form');
-      const success = document.getElementById('form-success');
-      const errorEl = document.getElementById('form-error');
-      const subjectInput = document.getElementById('form-subject');
-      const openButtons = document.querySelectorAll('[data-open-modal]');
-      const closeButtons = document.querySelectorAll('[data-close-modal]');
-
-      function openModal(subject) {
-        if (subject) subjectInput.value = subject;
-        form.style.display = 'block';
-        success.classList.remove('active');
-        errorEl.classList.remove('active');
-        errorEl.textContent = '';
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        const first = form.querySelector('input:not([type="hidden"]):not([tabindex="-1"])');
-        if (first) first.focus();
-      }
-
-      function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-
-      openButtons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          openModal(btn.getAttribute('data-subject'));
-        });
-      });
-
-      closeButtons.forEach(function (btn) {
-        btn.addEventListener('click', closeModal);
-      });
-
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) closeModal();
-      });
-
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-      });
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const btn = form.querySelector('.form-submit');
-        btn.disabled = true;
-        btn.textContent = 'Отправка...';
-        errorEl.classList.remove('active');
-
-        const data = {
-          parentName: form.parentName.value.trim(),
-          childAge: form.childAge.value.trim(),
-          phone: form.phone.value.trim(),
-          email: form.email.value.trim(),
-          comment: form.comment.value.trim(),
-          subject: subjectInput.value,
-          website: form.website.value // honeypot
-        };
-
-        fetch('/api/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        })
-        .then(function (res) {
-          return res.json().then(function (body) {
-            if (!res.ok || !body.ok) {
-              throw new Error(body.error || 'Ошибка отправки');
-            }
-            form.style.display = 'none';
-            success.classList.add('active');
-            form.reset();
-          });
-        })
-        .catch(function (err) {
-          errorEl.textContent = err.message || 'Не удалось отправить. Напишите на почту.';
-          errorEl.classList.add('active');
-        })
-        .finally(function () {
-          btn.disabled = false;
-          btn.textContent = 'Отправить';
-        });
-      });
-    })();
-  </script>
+  </footer>
 </body>
 </html>
