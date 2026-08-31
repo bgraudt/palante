@@ -1,0 +1,16 @@
+{
+  "name": "palante",
+  "version": "1.0.0",
+  "description": "Landing page with form → SMTP (Yandex)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemailer": "^6.9.16",
+    "cors": "^2.8.5",
+    "helmet": "^8.0.0",
+    "express-rate-limit": "^7.5.0"
+  }
+}

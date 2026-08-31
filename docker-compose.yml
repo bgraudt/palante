@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    container_name: palante
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    restart: unless-stopped
+    # Optional: limit resources
+    # mem_limit: 128m
