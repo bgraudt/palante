@@ -5,7 +5,7 @@
 ## Быстрый старт
 
 ```bash
-git clone <твой-репозиторий>
+git clone https://github.com/bgraudt/palante.git
 cd palante
 
 # Скопируй и заполни секреты
